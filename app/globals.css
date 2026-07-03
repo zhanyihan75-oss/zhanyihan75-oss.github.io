@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-inter: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.12), transparent 32rem),
+    linear-gradient(315deg, rgba(248, 113, 113, 0.12), transparent 36rem),
+    #f7f7f4;
+  color: #18181b;
+  font-family: var(--font-inter);
+  text-rendering: optimizeLegibility;
+}
+
+.dark body {
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.14), transparent 32rem),
+    linear-gradient(315deg, rgba(248, 113, 113, 0.13), transparent 36rem),
+    #10100f;
+  color: #fafafa;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.28);
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(24, 24, 27, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 27, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.dark .surface-grid {
+  background-image:
+    linear-gradient(rgba(250, 250, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 250, 250, 0.06) 1px, transparent 1px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}

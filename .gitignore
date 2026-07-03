@@ -1,0 +1,9 @@
+.next
+node_modules
+out
+dist
+.env*.local
+*.tsbuildinfo
+
+# Codex 运行日志
+work/
