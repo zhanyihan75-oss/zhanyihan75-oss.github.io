@@ -1,118 +1,108 @@
-import {
-  ArrowRight,
-  BriefcaseBusiness,
-  Github,
-  Layers3,
-  Linkedin,
-  Mail,
-  MapPin,
-  MousePointer2,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-const navItems = ["Work", "Services", "About", "Contact"];
+const navItems = ["Projects", "Playground", "About", "Contact"];
 
-const projects = [
+const featuredProjects = [
   {
-    name: "Atlas Studio",
-    kind: "Analytics platform",
+    title: "Monolith House",
+    type: "Identity / Art Direction",
     year: "2026",
-    accent: "bg-teal-500",
-    description:
-      "Led the redesign of a team analytics workspace with cleaner dashboards, faster filtering, and more confident decision paths.",
-    stats: ["42% faster queries", "18 core flows"],
+    summary:
+      "A restrained visual system for an architecture practice working between residential calm and civic scale.",
+    image: "from-zinc-950 via-zinc-800 to-zinc-300",
   },
   {
-    name: "Northline",
-    kind: "Commerce operations",
+    title: "Index No. 12",
+    type: "Editorial / Digital Experience",
     year: "2025",
-    accent: "bg-rose-500",
-    description:
-      "Built an operations console for inventory planning, supplier status, and exception handling across multiple regions.",
-    stats: ["9 markets", "31% fewer escalations"],
+    summary:
+      "A digital magazine framework built around pace, hierarchy, and image-led reading rituals.",
+    image: "from-neutral-200 via-neutral-500 to-neutral-950",
+  },
+];
+
+const galleryProjects = [
+  {
+    title: "Aster Objects",
+    type: "Campaign System",
+    year: "2026",
+    tone: "bg-neutral-200 dark:bg-neutral-800",
+    ratio: "aspect-[4/5]",
   },
   {
-    name: "PulseKit",
-    kind: "Design system",
+    title: "Civic Type Lab",
+    type: "Brand / Web",
+    year: "2025",
+    tone: "bg-zinc-900 dark:bg-zinc-100",
+    ratio: "aspect-[3/4]",
+  },
+  {
+    title: "Form Studies",
+    type: "Experimental Print",
+    year: "2025",
+    tone: "bg-stone-300 dark:bg-stone-700",
+    ratio: "aspect-square",
+  },
+  {
+    title: "Parallel Archive",
+    type: "Editorial System",
     year: "2024",
-    accent: "bg-amber-400",
-    description:
-      "Created a typed component library with accessible primitives, motion tokens, and documentation for product teams.",
-    stats: ["74 components", "AA contrast"],
+    tone: "bg-neutral-100 dark:bg-neutral-900",
+    ratio: "aspect-[5/4]",
+  },
+  {
+    title: "Field Notes",
+    type: "Photography Direction",
+    year: "2024",
+    tone: "bg-zinc-300 dark:bg-zinc-800",
+    ratio: "aspect-[4/3]",
+  },
+  {
+    title: "Quiet Index",
+    type: "Portfolio System",
+    year: "2023",
+    tone: "bg-black dark:bg-white",
+    ratio: "aspect-[3/4]",
   },
 ];
 
-const services = [
-  "Product strategy",
-  "Interface systems",
-  "Frontend architecture",
-  "Prototyping",
-  "Performance tuning",
-  "Launch support",
+const experiments = [
+  "Motion studies for low-friction page transitions",
+  "Typographic scales for dense case-study reading",
+  "Generative poster grids using constraint-based layout",
+  "Image sequencing systems for launch campaigns",
 ];
 
-const stack = [
-  "Next.js",
-  "TypeScript",
-  "React",
-  "Tailwind CSS",
-  "Node.js",
-  "Figma",
-  "Motion",
-  "Testing",
-];
-
-function ProjectPreview() {
+function SectionLabel({ index, label }: { index: string; label: string }) {
   return (
-    <div className="relative mx-auto aspect-[4/3] w-full max-w-xl animate-float-slow overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-950 p-4 shadow-2xl shadow-teal-900/20 dark:border-white/10">
-      <div className="flex h-full flex-col overflow-hidden rounded-[1.35rem] bg-[#f8f7f2] text-zinc-950 dark:bg-zinc-900 dark:text-white">
-        <div className="flex h-12 items-center justify-between border-b border-zinc-200 px-4 dark:border-white/10">
-          <div className="flex gap-2">
-            <span className="h-3 w-3 rounded-full bg-rose-400" />
-            <span className="h-3 w-3 rounded-full bg-amber-400" />
-            <span className="h-3 w-3 rounded-full bg-teal-400" />
-          </div>
-          <div className="h-2 w-28 rounded-full bg-zinc-200 dark:bg-white/15" />
-        </div>
+    <div className="reveal flex items-center justify-between border-t border-black/15 pt-4 text-[12px] font-light uppercase tracking-[0.18em] text-black/45 dark:border-white/15 dark:text-white/45">
+      <span>{index}</span>
+      <span>{label}</span>
+    </div>
+  );
+}
 
-        <div className="grid flex-1 grid-cols-[0.7fr_1fr] gap-4 p-4">
-          <div className="flex flex-col justify-between rounded-2xl bg-zinc-100 p-4 dark:bg-white/8">
-            <div>
-              <div className="mb-4 h-3 w-16 rounded-full bg-teal-500" />
-              <div className="space-y-2">
-                <div className="h-3 w-full rounded-full bg-zinc-300 dark:bg-white/20" />
-                <div className="h-3 w-4/5 rounded-full bg-zinc-300 dark:bg-white/20" />
-                <div className="h-3 w-2/3 rounded-full bg-zinc-300 dark:bg-white/20" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="aspect-square rounded-xl bg-teal-500/20" />
-              <div className="aspect-square rounded-xl bg-rose-500/20" />
-            </div>
-          </div>
-
-          <div className="grid grid-rows-[1fr_0.75fr] gap-4">
-            <div className="relative overflow-hidden rounded-2xl bg-zinc-950 p-4 text-white">
-              <div className="absolute inset-x-4 top-4 h-24 rounded-2xl bg-[linear-gradient(135deg,#14b8a6,#f97316)] opacity-90" />
-              <div className="relative mt-28 grid grid-cols-3 gap-2">
-                <div className="h-16 rounded-xl bg-white/15" />
-                <div className="h-16 rounded-xl bg-white/25" />
-                <div className="h-16 rounded-xl bg-white/15" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-amber-300 p-3 text-zinc-950">
-                <div className="mb-8 h-2 w-12 rounded-full bg-zinc-950/40" />
-                <div className="text-2xl font-black">98</div>
-              </div>
-              <div className="rounded-2xl bg-teal-500 p-3 text-white">
-                <div className="mb-8 h-2 w-10 rounded-full bg-white/45" />
-                <div className="text-2xl font-black">24k</div>
-              </div>
-            </div>
-          </div>
+function ProjectImage({
+  gradient,
+  className,
+}: {
+  gradient?: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`overflow-hidden bg-neutral-200 dark:bg-neutral-900 ${className ?? ""}`}
+    >
+      <div
+        className={`h-full w-full origin-center bg-gradient-to-br ${
+          gradient ?? "from-neutral-200 via-neutral-500 to-neutral-900"
+        } opacity-95 transition duration-300 ease-out group-hover:scale-[1.035] group-hover:opacity-85`}
+      >
+        <div className="grid h-full grid-cols-4 gap-px p-px opacity-20 mix-blend-overlay">
+          {Array.from({ length: 16 }).map((_, index) => (
+            <span key={index} className="bg-white/50 dark:bg-black/50" />
+          ))}
         </div>
       </div>
     </div>
@@ -121,130 +111,89 @@ function ProjectPreview() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-900/10 bg-[#f7f7f4]/80 backdrop-blur-xl dark:border-white/10 dark:bg-[#10100f]/75">
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
-          <a href="#top" className="flex items-center gap-3 font-semibold tracking-tight">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-950 text-sm text-white dark:bg-white dark:text-zinc-950">
-              MC
-            </span>
-            <span>Mira Chen</span>
+    <main className="min-h-screen overflow-hidden bg-[#f6f5f1] text-neutral-950 dark:bg-[#090909] dark:text-neutral-50">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-[#f6f5f1]/82 backdrop-blur-xl dark:border-white/10 dark:bg-[#090909]/80">
+        <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto] items-center gap-6 px-5 sm:px-8 lg:grid-cols-4">
+          <a
+            href="#top"
+            className="text-[13px] font-semibold uppercase tracking-[0.16em] transition hover:text-[#9b6a35]"
+          >
+            Mira Chen
           </a>
-          <div className="hidden items-center gap-7 text-sm font-medium text-zinc-600 dark:text-zinc-300 md:flex">
+          <div className="hidden items-center gap-8 text-[12px] font-light uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400 lg:col-span-2 lg:flex">
             {navItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-teal-700 dark:hover:text-teal-200">
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="transition duration-200 ease-out hover:text-[#9b6a35]"
+              >
                 {item}
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-end gap-3">
             <a
               href="mailto:hello@example.com"
-              className="hidden rounded-full bg-zinc-950 px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-teal-700 dark:bg-white dark:text-zinc-950 dark:hover:bg-teal-200 sm:inline-flex"
+              className="hidden text-[12px] font-light uppercase tracking-[0.16em] text-neutral-500 transition hover:text-[#9b6a35] dark:text-neutral-400 sm:inline"
             >
-              Let&apos;s talk
+              hello@example.com
             </a>
             <ThemeToggle />
           </div>
         </nav>
       </header>
 
-      <section id="top" className="surface-grid relative min-h-screen pt-24">
-        <div className="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl items-center gap-12 px-5 pb-12 sm:px-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="animate-fade-up">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/70 px-3 py-1.5 text-sm font-medium text-zinc-700 backdrop-blur dark:border-white/15 dark:bg-white/8 dark:text-zinc-200">
-              <MapPin size={15} />
-              Available for select product teams
-            </div>
-            <h1 className="max-w-4xl text-balance text-5xl font-black leading-[0.95] tracking-normal text-zinc-950 dark:text-white sm:text-7xl lg:text-8xl">
-              Product engineer for sharp, human web apps.
+      <section id="top" className="px-5 pb-20 pt-28 sm:px-8 lg:pb-28">
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-4">
+          <div className="reveal lg:col-span-3">
+            <p className="mb-8 max-w-sm text-[12px] font-light uppercase leading-5 tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+              Independent designer shaping identities, editorial systems, and image-led digital experiences.
+            </p>
+            <h1 className="max-w-6xl text-balance text-[64px] font-bold leading-[0.88] tracking-normal sm:text-[88px] lg:text-[128px]">
+              Quiet systems for bold visual stories.
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-              I design and build responsive interfaces where strategy, interaction, and production code meet with a little elegance.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#work"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-teal-600 px-6 py-3 font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500"
-              >
-                View work <ArrowRight size={18} />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 bg-white/70 px-6 py-3 font-semibold text-zinc-900 backdrop-blur transition hover:-translate-y-0.5 hover:border-zinc-950 dark:border-white/15 dark:bg-white/8 dark:text-white dark:hover:border-white/40"
-              >
-                Contact <Mail size={18} />
-              </a>
-            </div>
           </div>
-          <div className="animate-fade-up [animation-delay:160ms]">
-            <ProjectPreview />
+          <div className="reveal flex items-end lg:justify-end">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-3 border-b border-neutral-950 pb-2 text-[12px] font-semibold uppercase tracking-[0.16em] transition duration-200 ease-out hover:border-[#9b6a35] hover:text-[#9b6a35] dark:border-neutral-50"
+            >
+              View selected work
+              <ArrowUpRight
+                size={16}
+                className="transition duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-zinc-900/10 bg-zinc-950 py-4 text-white dark:border-white/10">
-        <div className="flex overflow-hidden">
-          <div className="flex min-w-full animate-marquee gap-8 whitespace-nowrap pr-8 text-sm font-semibold uppercase tracking-[0.18em] text-zinc-300">
-            {[...stack, ...stack].map((item, index) => (
-              <span key={`${item}-${index}`} className="flex items-center gap-8">
-                {item}
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-              </span>
-            ))}
-          </div>
-          <div className="flex min-w-full animate-marquee gap-8 whitespace-nowrap pr-8 text-sm font-semibold uppercase tracking-[0.18em] text-zinc-300" aria-hidden="true">
-            {[...stack, ...stack].map((item, index) => (
-              <span key={`${item}-copy-${index}`} className="flex items-center gap-8">
-                {item}
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="work" className="px-5 py-24 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">
-                <BriefcaseBusiness size={16} /> Selected work
-              </p>
-              <h2 className="max-w-3xl text-4xl font-black tracking-normal sm:text-5xl">
-                Interfaces built for speed, clarity, and daily use.
-              </h2>
-            </div>
-            <p className="max-w-xl text-zinc-700 dark:text-zinc-300">
-              Recent projects span SaaS dashboards, operational tools, and design systems for teams moving from prototype to production.
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-3">
-            {projects.map((project, index) => (
+      <section id="projects" className="px-5 pb-24 sm:px-8 lg:pb-32">
+        <div className="mx-auto max-w-[1440px]">
+          <SectionLabel index="01" label="Featured Projects" />
+          <div className="mt-8 grid gap-12 lg:grid-cols-2">
+            {featuredProjects.map((project, index) => (
               <article
-                key={project.name}
-                className="group animate-fade-up rounded-2xl border border-zinc-200 bg-white/80 p-6 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-teal-500 dark:border-white/10 dark:bg-white/7"
-                style={{ animationDelay: `${index * 110}ms` }}
+                key={project.title}
+                className="group reveal"
+                style={{ transitionDelay: `${index * 80}ms` }}
               >
-                <div className="mb-12 flex items-center justify-between">
-                  <span className={`h-3 w-12 rounded-full ${project.accent}`} />
-                  <span className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{project.year}</span>
-                </div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
-                  {project.kind}
-                </p>
-                <h3 className="mt-3 text-2xl font-black">{project.name}</h3>
-                <p className="mt-4 min-h-28 leading-7 text-zinc-700 dark:text-zinc-300">{project.description}</p>
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {project.stats.map((stat) => (
-                    <span
-                      key={stat}
-                      className="rounded-full border border-zinc-200 px-3 py-1 text-sm font-medium text-zinc-700 dark:border-white/10 dark:text-zinc-300"
-                    >
-                      {stat}
-                    </span>
-                  ))}
+                <ProjectImage
+                  gradient={project.image}
+                  className="aspect-[5/4]"
+                />
+                <div className="mt-5 grid gap-4 border-t border-black/15 pt-4 dark:border-white/15 sm:grid-cols-[1fr_auto]">
+                  <div>
+                    <p className="mb-2 text-[12px] font-light uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                      {project.type} / {project.year}
+                    </p>
+                    <h2 className="text-[32px] font-semibold leading-none tracking-normal">
+                      {project.title}
+                    </h2>
+                  </div>
+                  <p className="max-w-sm text-base leading-7 text-neutral-600 dark:text-neutral-300">
+                    {project.summary}
+                  </p>
                 </div>
               </article>
             ))}
@@ -252,82 +201,102 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-white/65 px-5 py-24 dark:bg-white/5 sm:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
-            <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-rose-700 dark:text-rose-300">
-              <Layers3 size={16} /> Services
-            </p>
-            <h2 className="text-4xl font-black tracking-normal sm:text-5xl">From fuzzy product bets to shipped experiences.</h2>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="flex min-h-20 items-center gap-4 rounded-2xl border border-zinc-200 bg-[#f7f7f4] p-5 font-semibold shadow-sm transition hover:-translate-y-0.5 hover:border-rose-400 dark:border-white/10 dark:bg-zinc-950/60"
+      <section id="gallery" className="px-5 pb-24 sm:px-8 lg:pb-32">
+        <div className="mx-auto max-w-[1440px]">
+          <SectionLabel index="02" label="Project Gallery" />
+          <div className="mt-8 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {galleryProjects.map((project, index) => (
+              <article
+                key={project.title}
+                className="group reveal"
+                style={{ transitionDelay: `${(index % 4) * 60}ms` }}
               >
-                <Sparkles className="text-rose-500" size={20} />
-                {service}
-              </div>
+                <div className={`overflow-hidden ${project.ratio}`}>
+                  <div
+                    className={`h-full w-full transition duration-300 ease-out group-hover:scale-[1.04] group-hover:opacity-80 ${project.tone}`}
+                  />
+                </div>
+                <div className="mt-4 flex items-start justify-between gap-4 border-t border-black/15 pt-3 dark:border-white/15">
+                  <div>
+                    <h3 className="text-base font-semibold tracking-normal">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 text-[12px] font-light uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
+                      {project.type}
+                    </p>
+                  </div>
+                  <span className="text-[12px] font-light text-neutral-500 dark:text-neutral-400">
+                    {project.year}
+                  </span>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="about" className="px-5 py-24 sm:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.85fr]">
-          <div>
-            <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">
-              <MousePointer2 size={16} /> About
-            </p>
-            <h2 className="max-w-4xl text-4xl font-black tracking-normal sm:text-5xl">
-              I work where design taste meets engineering leverage.
+      <section id="playground" className="px-5 pb-24 sm:px-8 lg:pb-32">
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-4">
+          <SectionLabel index="03" label="Experimental / Playground" />
+          <div className="reveal lg:col-span-3">
+            <h2 className="max-w-3xl text-[32px] font-semibold leading-[1.05] tracking-normal">
+              Small studies that keep the commercial work precise, current, and alive.
+            </h2>
+            <div className="mt-10 grid gap-px bg-black/15 dark:bg-white/15 sm:grid-cols-2">
+              {experiments.map((item) => (
+                <div
+                  key={item}
+                  className="min-h-36 bg-[#f6f5f1] p-5 text-base leading-7 text-neutral-700 transition duration-200 ease-out hover:text-[#9b6a35] dark:bg-[#090909] dark:text-neutral-300"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="px-5 pb-24 sm:px-8 lg:pb-32">
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-4">
+          <SectionLabel index="04" label="About" />
+          <div className="reveal lg:col-span-2">
+            <h2 className="text-[32px] font-semibold leading-[1.05] tracking-normal">
+              I build visual systems that feel calm at first glance and richer the longer you stay.
             </h2>
           </div>
-          <div className="space-y-6 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+          <div className="reveal space-y-5 text-base leading-7 text-neutral-600 dark:text-neutral-300">
             <p>
-              My best work happens with founders and product leaders who need a thoughtful partner: someone who can clarify the interface, build the system, and keep an eye on the moments that make a product feel trustworthy.
+              My practice sits between art direction, editorial design, and digital systems. The work is intentionally spare: fewer gestures, stronger hierarchy, and enough room for the project to breathe.
             </p>
             <p>
-              I care about fast feedback loops, durable components, clean motion, and the small details that make complex tools feel calm.
+              I partner with studios, founders, and cultural teams who need identities and websites with clarity, restraint, and visual memory.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="px-5 pb-10 sm:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-[2rem] bg-zinc-950 p-8 text-white sm:p-10 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-teal-300">
-              <Zap size={16} /> Now booking
+      <section id="contact" className="px-5 pb-8 sm:px-8">
+        <div className="mx-auto max-w-[1440px] border-t border-black/15 pt-5 dark:border-white/15">
+          <div className="grid gap-8 lg:grid-cols-4">
+            <p className="text-[12px] font-light uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+              Contact
             </p>
-            <h2 className="max-w-2xl text-4xl font-black tracking-normal sm:text-5xl">
-              Have a product worth making feel exceptional?
+            <h2 className="text-[32px] font-semibold leading-[1.05] tracking-normal lg:col-span-2">
+              Available for selected identity, editorial, and portfolio systems.
             </h2>
+            <div className="flex items-start lg:justify-end">
+              <a
+                href="mailto:hello@example.com"
+                className="group inline-flex items-center gap-3 border-b border-neutral-950 pb-2 text-[12px] font-semibold uppercase tracking-[0.16em] transition duration-200 ease-out hover:border-[#9b6a35] hover:text-[#9b6a35] dark:border-neutral-50"
+              >
+                Start a conversation
+                <Mail size={15} />
+              </a>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="mailto:hello@example.com"
-              title="Email"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white text-zinc-950 transition hover:-translate-y-0.5 hover:bg-teal-200"
-            >
-              <Mail size={20} />
-            </a>
-            <a
-              href="https://github.com"
-              title="GitHub"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-200"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              title="LinkedIn"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-200"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
+          <p className="mt-20 text-[12px] font-light uppercase tracking-[0.18em] text-neutral-400">
+            © 2026 Mira Chen. Design portfolio.
+          </p>
         </div>
       </section>
     </main>

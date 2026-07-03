@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mira Chen | Product Engineer",
+  title: "Mira Chen | Design Portfolio",
   description:
-    "A modern portfolio for a product engineer focused on polished web experiences.",
+    "A quiet, editorial portfolio for identity, art direction, and digital design work.",
 };
 
 const themeScript = `

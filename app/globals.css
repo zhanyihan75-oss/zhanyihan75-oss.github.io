@@ -22,25 +22,19 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.12), transparent 32rem),
-    linear-gradient(315deg, rgba(248, 113, 113, 0.12), transparent 36rem),
-    #f7f7f4;
+  background: #f6f5f1;
   color: #18181b;
   font-family: var(--font-inter);
   text-rendering: optimizeLegibility;
 }
 
 .dark body {
-  background:
-    linear-gradient(135deg, rgba(20, 184, 166, 0.14), transparent 32rem),
-    linear-gradient(315deg, rgba(248, 113, 113, 0.13), transparent 36rem),
-    #10100f;
+  background: #090909;
   color: #fafafa;
 }
 
 ::selection {
-  background: rgba(20, 184, 166, 0.28);
+  background: rgba(155, 106, 53, 0.28);
 }
 
 .surface-grid {
@@ -58,4 +52,37 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.reveal {
+  animation: reveal 280ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 28%;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
